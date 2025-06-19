@@ -40,14 +40,15 @@
     const gradeCounts = {};
     for (const grade of lines) {
       let letter = "F";
-      if (grade >= 90) letter = "A+";
-      else if (grade >= 85) letter = "A";
-      else if (grade >= 80) letter = "B+";
-      else if (grade >= 75) letter = "B";
-      else if (grade >= 70) letter = "C+";
-      else if (grade >= 65) letter = "C";
-      else if (grade >= 60) letter = "D+";
-      else if (grade >= 50) letter = "D";
+      if (grade >= 95) letter = "A+";
+      else if (grade >= 90) letter = "A";
+      else if (grade >= 85) letter = "B+";
+      else if (grade >= 80) letter = "B";
+      else if (grade >= 75) letter = "C+";
+      else if (grade >= 70) letter = "C";
+      else if (grade >= 65) letter = "D+";
+      else if (grade >= 60) letter = "D";
+      else if (grade >= 0) letter = "F";
       gradeCounts[letter] = (gradeCounts[letter] || 0) + 1;
     }
 

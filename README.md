@@ -12,19 +12,20 @@ You can host this directly on GitHub Pages. No PHP or backend server required.
 2. Click "Calculate"
 3. View the summary of how many students fall into each grade range.
 
-## 📚 Grade Ranges
+## 📚 Grade Ranges based on the university level in Saudi Arabia,
 
-| Grade | Range    |
-|-------|----------|
-| A+    | 90–100   |
-| A     | 85–89    |
-| B+    | 80–84    |
-| B     | 75–79    |
-| C+    | 70–74    |
-| C     | 65–69    |
-| D+    | 60–64    |
-| D     | 50–59    |
-| F     | Below 50 |
+      Grade        | English Term     | Percentage Range | GPA
+-------------------|------------------|------------------|-----
+A+                 | Outstanding      | 95-100%          | 4.0
+A                  | Excellent        | 90-94%           | 3.75
+B+                 | Very Good        | 85-89%           | 3.5
+B                  | Good             | 80-84%           | 3.0
+C+                 | Above Average    | 75-79%           | 2.5
+C                  | Average          | 70-74%           | 2.0
+D+                 | Satisfactory     | 65-69%           | 1.5
+D                  | Minimum Pass     | 60-64%           | 1.0
+F                  | Fail             | Below 60%        | 0.0
+
 
 ## 🧑‍💻 Hosting on GitHub Pages
 

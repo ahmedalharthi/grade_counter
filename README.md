@@ -14,7 +14,7 @@ You can host this directly on GitHub Pages. No PHP or backend server required.
 
 ## 📚 Grade Ranges based on the university level in Saudi Arabia,
 
-      Grade        | English Term     | Percentage Range | GPA
+Saudi Arabia Grade | English Term     | Percentage Range | GPA
 -------------------|------------------|------------------|-----
 A+                 | Outstanding      | 95-100%          | 4.0
 A                  | Excellent        | 90-94%           | 3.75

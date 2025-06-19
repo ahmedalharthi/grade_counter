@@ -6,7 +6,7 @@ A simple web application to count the number of grades falling into specific ran
 
 ## 🌐 Live Demo
 
-> Paste this app on your [Bluehost shared hosting](https://www.bluehost.com/) server and visit `index.html`.
+> Paste this app on https://ahmedalharthi.net/apps/grade_counter/ 
 
 ---
 

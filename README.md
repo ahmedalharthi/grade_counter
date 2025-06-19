@@ -6,6 +6,12 @@ This is a pure HTML + JavaScript application that calculates the distribution of
 
 You can host this directly on GitHub Pages. No PHP or backend server required.
 
+
+<img width="939" alt="image" src="https://github.com/user-attachments/assets/a17b2cdd-940e-4a43-802d-033f167b0867" />
+
+
+
+
 ## ✅ How to Use
 
 1. Enter one student grade per line (e.g. `92`, `83`, `60`)

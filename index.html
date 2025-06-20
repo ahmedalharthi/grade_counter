@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,8 +20,12 @@
     <div class="col-md-8">
       <div class="card p-4">
         <h3 class="mb-3">Grade Range Calculator</h3>
-        <textarea id="gradesInput" class="form-control mb-3" rows="5" placeholder="Enter one grade per line, e.g.\n92\n80\n83\n60"></textarea>
-        <button onclick="calculateGrades()" class="btn btn-dark">Calculate</button>
+        <textarea id="gradesInput" class="form-control mb-3" rows="5" placeholder="Enter one grade per line, e.g.
+92
+80
+83
+60"></textarea>
+        <button id="calculateBtn" class="btn btn-dark">Calculate</button>
         <div id="output" class="mt-4"></div>
       </div>
     </div>
@@ -33,43 +36,71 @@
 </p>
 
 <script>
-  function calculateGrades() {
-    const text = document.getElementById("gradesInput").value;
-    const lines = text.split("\n").map(l => parseFloat(l)).filter(n => !isNaN(n));
+  // Grade boundaries and labels
+  const gradeRanges = [
+    { min: 95, label: "A+" },
+    { min: 90, label: "A" },
+    { min: 85, label: "B+" },
+    { min: 80, label: "B" },
+    { min: 75, label: "C+" },
+    { min: 70, label: "C" },
+    { min: 65, label: "D+" },
+    { min: 60, label: "D" },
+    { min: -Infinity, label: "F" }
+  ];
 
-    const gradeCounts = {};
-    for (const grade of lines) {
-      let letter = "F";
-      if (grade >= 95) letter = "A+";
-      else if (grade >= 90) letter = "A";
-      else if (grade >= 85) letter = "B+";
-      else if (grade >= 80) letter = "B";
-      else if (grade >= 75) letter = "C+";
-      else if (grade >= 70) letter = "C";
-      else if (grade >= 65) letter = "D+";
-      else if (grade >= 60) letter = "D";
-      else if (grade <= 59) letter = "F";
-      gradeCounts[letter] = (gradeCounts[letter] || 0) + 1;
+  function getLetterGrade(score) {
+    for (const range of gradeRanges) {
+      if (score >= range.min) return range.label;
     }
+    return "F";
+  }
 
+  function parseGrades(input) {
+    return input
+      .split("\n")
+      .map(line => parseFloat(line.trim()))
+      .filter(num => !isNaN(num));
+  }
+
+  function summarizeGrades(grades) {
+    const counts = {};
+    grades.forEach(grade => {
+      const letter = getLetterGrade(grade);
+      counts[letter] = (counts[letter] || 0) + 1;
+    });
+    return counts;
+  }
+
+  function renderSummary(counts, total) {
+    const gradeOrder = gradeRanges.map(g => g.label);
     let html = `<h5>Grade Summary:</h5><ul class="list-group">`;
-    const gradeOrder = ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"];
-    const total = lines.length;
-
-    gradeOrder.forEach(g => {
-      if (gradeCounts[g]) {
-        const count = gradeCounts[g];
+    gradeOrder.forEach(letter => {
+      if (counts[letter]) {
+        const count = counts[letter];
         const percent = ((count / total) * 100).toFixed(1);
         html += `<li class="list-group-item d-flex justify-content-between align-items-center">
-          ${g}
+          ${letter}
           <span class="badge bg-dark rounded-pill">${count} (${percent}%)</span>
         </li>`;
       }
     });
-
     html += `</ul>`;
-    document.getElementById("output").innerHTML = html;
+    return html;
   }
+
+  function calculateGrades() {
+    const input = document.getElementById("gradesInput").value;
+    const grades = parseGrades(input);
+    if (grades.length === 0) {
+      document.getElementById("output").innerHTML = `<div class="alert alert-warning">Please enter at least one valid grade.</div>`;
+      return;
+    }
+    const counts = summarizeGrades(grades);
+    document.getElementById("output").innerHTML = renderSummary(counts, grades.length);
+  }
+
+  document.getElementById("calculateBtn").addEventListener("click", calculateGrades);
 </script>
 
 </body>
